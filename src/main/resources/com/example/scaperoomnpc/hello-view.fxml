@@ -1,16 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.scaperoomnpc.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+<VBox alignment="CENTER" prefHeight="381.0" prefWidth="517.0" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="com.example.scaperoomnpc.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <children>
+      <VBox prefHeight="360.0" prefWidth="477.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="105.0" fitWidth="118.0" pickOnBounds="true" preserveRatio="true" />
+                  <VBox prefHeight="105.0" prefWidth="360.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SCAPE ROOM" textAlignment="CENTER" wrappingWidth="360.13671875">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Excitante xogo no que terás que adiviñar  o número que falta da combinación secreta para abrir o último candado para poder saír da habitación antes de que o asasino entre pola porta" wrappingWidth="361.13671875">
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" top="10.0" />
+                           </VBox.margin>
+                        </Text>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <TextField alignment="CENTER" prefHeight="65.0" prefWidth="177.0" text="Numero entre 1 e 100" />
+                  <TextField alignment="CENTER" prefHeight="65.0" prefWidth="171.0" text="Tes un total de 6 intentos" />
+                  <TextField alignment="CENTER" prefHeight="67.0" prefWidth="163.0" text="Quedanche N intentos" />
+               </children>
+               <padding>
+                  <Insets left="2.0" right="2.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="76.0" prefWidth="490.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numero:" textAlignment="CENTER" wrappingWidth="74.13671875" />
+                  <TextField />
+                  <Button mnemonicParsing="false" text="Probar" textAlignment="CENTER" />
+               </children>
+            </HBox>
+            <VBox alignment="CENTER" prefHeight="103.0" prefWidth="490.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="290.0" text="FEEDBACK" textOverrun="CLIP" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
 </VBox>
