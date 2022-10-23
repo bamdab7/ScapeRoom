@@ -34,9 +34,9 @@
                   </VBox>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                  <TextField fx:id="nRandom" alignment="CENTER" prefHeight="65.0" prefWidth="177.0" text="Numero entre 1 e 100" />
-                  <TextField fx:id="intentosTotal" alignment="CENTER" prefHeight="65.0" prefWidth="171.0" text="Tes un total de 6 intentos" />
-                  <TextField fx:id="intentosRestantes" alignment="CENTER" prefHeight="67.0" prefWidth="163.0" text="Quedanche N intentos" />
+                  <TextField alignment="CENTER" editable="false" prefHeight="65.0" prefWidth="177.0" text="Numero entre 1 e 100" />
+                  <TextField fx:id="TXTintentosTotal" alignment="CENTER" editable="false" prefHeight="65.0" prefWidth="171.0" text="Tes un total de 6 intentos" />
+                  <TextField fx:id="TXTintentosRestantes" alignment="CENTER" editable="false" prefHeight="67.0" prefWidth="163.0" text="Quedanche N intentos" />
                <padding>
                   <Insets left="2.0" right="2.0" />
                </padding>
@@ -44,10 +44,14 @@
             <HBox alignment="CENTER" prefHeight="76.0" prefWidth="490.0">
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numero:" textAlignment="CENTER" wrappingWidth="74.13671875" />
                   <TextField fx:id="numeroUsuario" />
-                  <Button id="btnProbar" onAction="#btnProbar" mnemonicParsing="false" text="Probar" textAlignment="CENTER" />
+                  <Button id="btnProbar" mnemonicParsing="false" onAction="#btnProbar" text="Probar" textAlignment="CENTER" />
             </HBox>
             <VBox alignment="CENTER" prefHeight="103.0" prefWidth="490.0">
-                  <Button fx:id="btnFeedback" onAction="#btnFeedback" mnemonicParsing="false" prefHeight="28.0" prefWidth="290.0" text="FEEDBACK" textOverrun="CLIP" />
+         <Text strokeType="OUTSIDE" fx:id="TXTFeedBack" strokeWidth="0.0" text="FEEDBACK" textAlignment="CENTER" wrappingWidth="184.423828125">
+            <font>
+               <Font name="System Bold" size="24.0" />
+            </font>
+         </Text>
             </VBox>
       </VBox>
 </VBox>
