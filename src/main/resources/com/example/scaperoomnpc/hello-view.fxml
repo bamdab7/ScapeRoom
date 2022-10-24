@@ -44,10 +44,10 @@
             <HBox alignment="CENTER" prefHeight="76.0" prefWidth="490.0">
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numero:" textAlignment="CENTER" wrappingWidth="74.13671875" />
                   <TextField fx:id="numeroUsuario" />
-                  <Button id="btnProbar" mnemonicParsing="false" onAction="#btnProbar" text="Probar" textAlignment="CENTER" />
+                  <Button fx:id="btnProbar" mnemonicParsing="false" onAction="#btnProbar" text="Probar" textAlignment="CENTER" />
             </HBox>
             <VBox alignment="CENTER" prefHeight="103.0" prefWidth="490.0">
-         <Text strokeType="OUTSIDE" fx:id="TXTFeedBack" strokeWidth="0.0" text="FEEDBACK" textAlignment="CENTER" wrappingWidth="184.423828125">
+         <Text fx:id="TXTFeedBack" strokeType="OUTSIDE" strokeWidth="0.0" text="FEEDBACK" textAlignment="CENTER" wrappingWidth="312.423828125">
             <font>
                <Font name="System Bold" size="24.0" />
             </font>

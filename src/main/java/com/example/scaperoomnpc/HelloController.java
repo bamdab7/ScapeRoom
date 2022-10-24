@@ -18,26 +18,40 @@ public class HelloController {
     public TextField TXTintentosRestantes;
     public TextField numeroUsuario;
     public Text TXTFeedBack;
+    public Button btnProbar;
+    int numeroIntentos = 6; //sino ejecuta 7 intentos
 
 //  PARA LLAMAR AL NUMERO ALEATORIO = HelloApplication.numeroAleatorio
 
-
     public void btnProbar(ActionEvent actionEvent) {
+        numeroIntentos--;
+        if(numeroIntentos==0){
+            btnProbar.setVisible(false);
+        }
         // ESTE ES EL BOTON QUE HACE LAS COMPROBACIONES
         int numeroUsuarioInput= parseInt(numeroUsuario.getText());
-            //diferencia
-            int lejos = numeroUsuarioInput - HelloApplication.numeroAleatorio;
-            int lejos2 = HelloApplication.numeroAleatorio - numeroUsuarioInput;
-
+        //diferencia
+        int lejos = numeroUsuarioInput - HelloApplication.numeroAleatorio;
+        int lejos2 = HelloApplication.numeroAleatorio - numeroUsuarioInput;
+      //  numeroIntentos--;
         if(lejos > 20 || lejos2 > 20){
             TXTFeedBack.setFill(Color.BLUE);
+            TXTFeedBack.setText("El numero esta lejos");
             System.out.println("El numero esta lejos, diferencia de mas de 20");
         }else if(lejos < 20 && lejos > 10 || lejos2< 20 && lejos2 >10){
             TXTFeedBack.setFill(Color.ORANGE);
-            System.out.println("EL numero esta algo cerca, diferencia menos de  20 y  mas de 10");
+            TXTFeedBack.setText("El numero esta algo cerc");
+            System.out.println("El numero esta algo cerca, diferencia menos de  20 y  mas de 10");
         }else if(lejos < 10 || lejos2<10 ){
             TXTFeedBack.setFill(Color.RED);
+            TXTFeedBack.setText("El numero esta muy cerca");
             System.out.println("El numero esta muy cerca, menos de 10");
+        }
+        TXTintentosRestantes.setText("Quedanche  " + numeroIntentos + " intentos");
+        if(numeroUsuarioInput==HelloApplication.numeroAleatorio){
+            btnProbar.setVisible(false);
+            TXTFeedBack.setText("Acertó en " + numeroIntentos + " intentos");
+            TXTFeedBack.setFill(Color.GREEN);
         }
     }
 }

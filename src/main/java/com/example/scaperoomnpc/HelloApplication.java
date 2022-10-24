@@ -12,7 +12,6 @@ public class HelloApplication extends Application {
     static int numeroAleatorio;
     @Override
     public void start(Stage stage) throws IOException {
-
         //  AL ARRANCAR GENERAR UN NUMERO RANDOM
         int max= 100;
         int min = 1;
