@@ -61,4 +61,10 @@ public class HelloController {
         }
 
     }
+
+    public void btnReset(ActionEvent actionEvent) {
+        //  BASICAMENTE ESTE BOTON LO QUE HACE ES SETEAR TODOS LOS VALORES A COMO ESTABAN ANTES
+        numeroIntentos = 6;
+        btnProbar.setVisible(true);
+    }
 }

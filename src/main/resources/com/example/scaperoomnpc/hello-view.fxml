@@ -44,7 +44,23 @@
             <HBox alignment="CENTER" prefHeight="76.0" prefWidth="490.0">
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numero:" textAlignment="CENTER" wrappingWidth="74.13671875" />
                   <TextField fx:id="numeroUsuario" />
-                  <Button fx:id="btnProbar" mnemonicParsing="false" onAction="#btnProbar" text="Probar" textAlignment="CENTER" />
+         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <children>
+                        <Button fx:id="btnProbar" mnemonicParsing="false" onAction="#btnProbar" text="Probar" textAlignment="CENTER">
+                  <opaqueInsets>
+                     <Insets right="20.0" />
+                  </opaqueInsets>
+                  <HBox.margin>
+                     <Insets right="30.0" />
+                  </HBox.margin>
+               </Button>
+               <Button fx:id="btnReset" mnemonicParsing="false" onAction="#btnReset" text="Reset" textAlignment="CENTER" >
+                  <HBox.margin>
+                     <Insets left="10.0" />
+                  </HBox.margin>
+               </Button>
+            </children>
+         </HBox>
             </HBox>
             <VBox alignment="CENTER" prefHeight="103.0" prefWidth="490.0">
          <Text fx:id="TXTFeedBack" strokeType="OUTSIDE" strokeWidth="0.0" text="FEEDBACK" textAlignment="CENTER" wrappingWidth="312.423828125">
