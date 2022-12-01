@@ -34,7 +34,7 @@
                   </VBox>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                  <TextField alignment="CENTER" editable="false" prefHeight="65.0" prefWidth="177.0" text="Numero entre 1 e 100" />
+                  <TextField alignment="CENTER" editable="false" prefHeight="65.0" prefWidth="177.0" text="Numero entre 0 e 100" />
                   <TextField fx:id="TXTintentosTotal" alignment="CENTER" editable="false" prefHeight="65.0" prefWidth="171.0" text="Tes un total de 6 intentos" />
                   <TextField fx:id="TXTintentosRestantes" alignment="CENTER" editable="false" prefHeight="67.0" prefWidth="163.0" text="Quedanche N intentos" />
                <padding>
@@ -54,7 +54,7 @@
                      <Insets right="30.0" />
                   </HBox.margin>
                </Button>
-               <Button fx:id="btnReset" mnemonicParsing="false" onAction="#btnReset" text="Reset" textAlignment="CENTER" >
+               <Button fx:id="btnNuevaPartida" mnemonicParsing="false" onAction="#btnNuevaPartida" text="Reset" textAlignment="CENTER" >
                   <HBox.margin>
                      <Insets left="10.0" />
                   </HBox.margin>

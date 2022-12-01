@@ -19,24 +19,35 @@ public class HelloController {
     public TextField numeroUsuario;
     public Text TXTFeedBack;
     public Button btnProbar;
+    public Button btnNuevaPartida;
     int numeroIntentos = 6; //sino ejecuta 7 intentos
+    private int numeroAleatorio;
 
-//  PARA LLAMAR AL NUMERO ALEATORIO = HelloApplication.numeroAleatorio
+    protected void setup(){
+        //GENERAMOS NUMERO ALEATORIO
+        numeroAleatorio = (int) (Math.random() * ((100 -1) + 1) +1);
+        //RESETEAMOS
+        numeroUsuario.setText("");
+        btnProbar.setDisable(false);
+        numeroIntentos = 6;
+        TXTintentosRestantes.setText("Quedanche  " + numeroIntentos + " intentos");
+    }
 
     public void btnProbar(ActionEvent actionEvent) {
+        System.out.println(numeroAleatorio);
         // ESTE ES EL BOTON QUE HACE LAS COMPROBACIONES
         int numeroUsuarioInput= parseInt(numeroUsuario.getText());
         //  COMPROBADOR DE SI EL NUMERO ESTA DENTRO DEL RANGO ESPECIFICADO
-        if(numeroUsuarioInput <= 0 || numeroUsuarioInput>100){
-            TXTFeedBack.setText("Por favor introduce un numero válido 1-100");
+        if(numeroUsuarioInput < -1 || numeroUsuarioInput>100){
+            TXTFeedBack.setText("Por favor introduce un numero válido 0-100");
         }else{
             numeroIntentos--;
             if(numeroIntentos==0){
-                btnProbar.setVisible(false);
+                btnProbar.setDisable(true);
             }
             //diferencia
-            int lejos = numeroUsuarioInput - HelloApplication.numeroAleatorio;
-            int lejos2 = HelloApplication.numeroAleatorio - numeroUsuarioInput;
+            int lejos = numeroUsuarioInput - numeroAleatorio;
+            int lejos2 = numeroAleatorio - numeroUsuarioInput;
             //  numeroIntentos--;
             if(lejos > 20 || lejos2 > 20){
                 TXTFeedBack.setFill(Color.BLUE);
@@ -52,19 +63,17 @@ public class HelloController {
                 System.out.println("El numero esta muy cerca, menos de 10");
             }
             TXTintentosRestantes.setText("Quedanche  " + numeroIntentos + " intentos");
-            if(numeroUsuarioInput==HelloApplication.numeroAleatorio){
-                btnProbar.setVisible(false);
+            if(numeroUsuarioInput==numeroAleatorio){
                 int resta= 6 - numeroIntentos;
                 TXTFeedBack.setText("Acertó en " + resta + " intentos");
                 TXTFeedBack.setFill(Color.GREEN);
+                btnProbar.setDisable(true);
             }
         }
 
     }
 
-    public void btnReset(ActionEvent actionEvent) {
-        //  BASICAMENTE ESTE BOTON LO QUE HACE ES SETEAR TODOS LOS VALORES A COMO ESTABAN ANTES
-        numeroIntentos = 6;
-        btnProbar.setVisible(true);
+    public void btnNuevaPartida(ActionEvent actionEvent) {
+        setup();
     }
 }
