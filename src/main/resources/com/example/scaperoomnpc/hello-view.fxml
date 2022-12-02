@@ -2,72 +2,135 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" prefHeight="381.0" prefWidth="517.0" spacing="20.0" style="-fx-background-color: LightSeaGreen;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.scaperoomnpc.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
-      <VBox prefHeight="360.0" prefWidth="477.0">
-            <HBox prefHeight="100.0" prefWidth="200.0">
-                  <ImageView fitHeight="105.0" fitWidth="118.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@../../../img/scaperoom.jpg" />
-            </image></ImageView>
-                  <VBox prefHeight="105.0" prefWidth="360.0" style="-fx-background-color: PaleTurquoise;">
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SCAPE ROOM" textAlignment="CENTER" wrappingWidth="360.13671875">
+
+<TabPane prefHeight="428.0" prefWidth="542.0" style="-fx-background-color: PaleTurquoise;" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.scaperoomnpc.HelloController">
+  <tabs>
+    <Tab text="Juego">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="406.0" prefWidth="567.0" style="-fx-background-color: PaleTurquoise;">
+               <children>
+                     <VBox prefHeight="360.0" prefWidth="477.0">
+                           <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <ImageView fitHeight="105.0" fitWidth="118.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../img/scaperoom.jpg" />
+                           </image>
+                        </ImageView>
+                                 <VBox prefHeight="105.0" prefWidth="360.0" style="-fx-background-color: PaleTurquoise;">
+                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SCAPE ROOM" textAlignment="CENTER" wrappingWidth="360.13671875">
+                                          <font>
+                                             <Font name="Arial Nova Light" size="23.0" />
+                                          </font>
+                                       </Text>
+                                       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Excitante xogo no que terás que adiviñar  o número que falta da combinación secreta para abrir o último candado para poder saír da habitación antes de que o asasino entre pola porta" wrappingWidth="361.13671875">
+                                          <VBox.margin>
+                                             <Insets left="5.0" right="5.0" top="10.0" />
+                                          </VBox.margin>
+                                       </Text>
+                                 </VBox>
+                           </HBox>
+                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: PaleTurquoise;">
+                                 <TextField alignment="CENTER" editable="false" prefHeight="65.0" prefWidth="177.0" style="-fx-background-color: PowderBlue;" text="Numero entre 0 e 100" />
+                                 <TextField fx:id="TXTintentosTotal" alignment="CENTER" editable="false" prefHeight="65.0" prefWidth="171.0" style="-fx-background-color: PowderBlue;" text="Tes un total de 6 intentos" />
+                                 <TextField fx:id="TXTintentosRestantes" alignment="CENTER" editable="false" prefHeight="67.0" prefWidth="163.0" style="-fx-background-color: PowderBlue;" text="Quedanche N intentos" />
+                              <padding>
+                                 <Insets left="2.0" right="2.0" />
+                              </padding>
+                           </HBox>
+                           <HBox alignment="CENTER" prefHeight="76.0" prefWidth="490.0" style="-fx-background-color: PaleTurquoise;">
+                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numero:" textAlignment="CENTER" wrappingWidth="74.13671875" />
+                                 <TextField fx:id="numeroUsuario" />
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                                       <Button fx:id="btnProbar" mnemonicParsing="false" onAction="#btnProbar" text="Probar" textAlignment="CENTER">
+                                 <opaqueInsets>
+                                    <Insets right="20.0" />
+                                 </opaqueInsets>
+                                 <HBox.margin>
+                                    <Insets right="30.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="btnNuevaPartida" mnemonicParsing="false" onAction="#btnNuevaPartida" text="Reset" textAlignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                           </HBox>
+                           <VBox alignment="CENTER" prefHeight="96.0" prefWidth="502.0" style="-fx-background-color: PaleTurquoise;">
+                        <Text fx:id="TXTFeedBack" strokeType="OUTSIDE" strokeWidth="0.0" text="FEEDBACK" textAlignment="CENTER" wrappingWidth="312.423828125">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Excitante xogo no que terás que adiviñar  o número que falta da combinación secreta para abrir o último candado para poder saír da habitación antes de que o asasino entre pola porta" wrappingWidth="361.13671875">
-                           <VBox.margin>
-                              <Insets left="5.0" right="5.0" top="10.0" />
-                           </VBox.margin>
-                        </Text>
+                           </VBox>
+                     </VBox>
+               </children>
+            </AnchorPane>
+      </content>
+    </Tab>
+    <Tab text="Configuraciones">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <VBox layoutX="7.0" prefHeight="376.0" prefWidth="505.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Archivo de configuracion del programa">
+                                 <font>
+                                    <Font name="Arial Nova Light" size="23.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numero minimo adivinable" wrappingWidth="168.65625" />
+                              <TextField>
+                                 <opaqueInsets>
+                                    <Insets left="10.0" />
+                                 </opaqueInsets>
+                              </TextField>
+                           </children>
+                           <opaqueInsets>
+                              <Insets left="10.0" right="10.0" />
+                           </opaqueInsets>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numero maximo adivinable" wrappingWidth="182.572265625" />
+                              <TextField />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Itentos disponibles" wrappingWidth="170.572265625" />
+                              <TextField />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Button contentDisplay="CENTER" mnemonicParsing="false" text="Guardar configuracion" />
+                           </children>
+                        </HBox>
+                     </children>
                   </VBox>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: PaleTurquoise;">
-                  <TextField alignment="CENTER" editable="false" prefHeight="65.0" prefWidth="177.0" style="-fx-background-color: PowderBlue;" text="Numero entre 0 e 100" />
-                  <TextField fx:id="TXTintentosTotal" alignment="CENTER" editable="false" prefHeight="65.0" prefWidth="171.0" style="-fx-background-color: PowderBlue;" text="Tes un total de 6 intentos" />
-                  <TextField fx:id="TXTintentosRestantes" alignment="CENTER" editable="false" prefHeight="67.0" prefWidth="163.0" style="-fx-background-color: PowderBlue;" text="Quedanche N intentos" />
-               <padding>
-                  <Insets left="2.0" right="2.0" />
-               </padding>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="76.0" prefWidth="490.0" style="-fx-background-color: PaleTurquoise;">
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Numero:" textAlignment="CENTER" wrappingWidth="74.13671875" />
-                  <TextField fx:id="numeroUsuario" />
-         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-            <children>
-                        <Button fx:id="btnProbar" mnemonicParsing="false" onAction="#btnProbar" text="Probar" textAlignment="CENTER">
-                  <opaqueInsets>
-                     <Insets right="20.0" />
-                  </opaqueInsets>
-                  <HBox.margin>
-                     <Insets right="30.0" />
-                  </HBox.margin>
-               </Button>
-               <Button fx:id="btnNuevaPartida" mnemonicParsing="false" onAction="#btnNuevaPartida" text="Reset" textAlignment="CENTER">
-                  <HBox.margin>
-                     <Insets left="10.0" />
-                  </HBox.margin>
-               </Button>
-            </children>
-         </HBox>
-            </HBox>
-            <VBox alignment="CENTER" prefHeight="103.0" prefWidth="490.0" style="-fx-background-color: PaleTurquoise;">
-         <Text fx:id="TXTFeedBack" strokeType="OUTSIDE" strokeWidth="0.0" text="FEEDBACK" textAlignment="CENTER" wrappingWidth="312.423828125">
-            <font>
-               <Font name="System Bold" size="24.0" />
-            </font>
-         </Text>
-            </VBox>
-      </VBox>
-</VBox>
+               </children>
+            </AnchorPane>
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>

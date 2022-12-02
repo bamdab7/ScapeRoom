@@ -23,7 +23,7 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = null;
         try{
-            scene = new Scene(fxmlLoader.load(), 650, 550);
+            scene = new Scene(fxmlLoader.load(), 517, 381);
         }catch (IOException e){
             System.err.println("Error al cargar la escena");
         }
