@@ -2,27 +2,39 @@ package com.example.scaperoomnpc;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
+import java.net.URL;
 import java.util.Random;
+import java.util.ResourceBundle;
 
 import static java.lang.Integer.parseInt;
 
-public class HelloController {
+public class HelloController implements Initializable {
 
     public TextField TXTintentosTotal;
     public TextField TXTintentosRestantes;
     public TextField numeroUsuario;
+    public TextField txtNumeroMinimo;
+    public TextField txtNumeroMaximo;
+    public TextField txtIntentos;
     public Text TXTFeedBack;
     public Button btnProbar;
     public Button btnNuevaPartida;
+    public Button btnConfiguracion;
     int numeroIntentos = 6; //sino ejecuta 7 intentos
     private int numeroAleatorio;
-
+    
+    //Metodo inicializador
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        setup();
+    }
     protected void setup(){
         //GENERAMOS NUMERO ALEATORIO
         numeroAleatorio = (int) (Math.random() * ((100 -1) + 1) +1);
@@ -75,5 +87,8 @@ public class HelloController {
 
     public void btnNuevaPartida(ActionEvent actionEvent) {
         setup();
+    }
+
+    public void btnConfiguracion(ActionEvent actionEvent) {
     }
 }
