@@ -9,7 +9,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
+import java.io.*;
 import java.net.URL;
+import java.util.Properties;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -27,68 +29,127 @@ public class HelloController implements Initializable {
     public Button btnProbar;
     public Button btnNuevaPartida;
     public Button btnConfiguracion;
-    int numeroIntentos = 6; //sino ejecuta 7 intentos
+    public TextField TXTNumeroaAdivinar;
     private int numeroAleatorio;
-    
+    private int numeroMinimo, numeroMaximo;
+    private int intentosRestantes, numeroIntentos;
+
     //Metodo inicializador
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setup();
     }
-    protected void setup(){
-        //GENERAMOS NUMERO ALEATORIO
-        numeroAleatorio = (int) (Math.random() * ((100 -1) + 1) +1);
-        //RESETEAMOS
+    protected void setup() {
+        //En este metodo cargaremos la configuracion que hay en el programa
+        cargarConfig();
+        
+        //Generando numero aleatorio
+        numeroAleatorio = (int) (Math.random() * ((numeroMaximo - numeroMinimo) + 1) + numeroMinimo);
+        intentosRestantes = numeroIntentos;
+
+        //Reseteamos
         numeroUsuario.setText("");
         btnProbar.setDisable(false);
-        numeroIntentos = 6;
-        TXTintentosRestantes.setText("Quedanche  " + numeroIntentos + " intentos");
+
+        TXTNumeroaAdivinar.setText("Numero entre " + numeroMinimo + "  e" + numeroMaximo);
+        TXTintentosTotal.setText("Tes un total de " +numeroIntentos + " intentos");
+        TXTintentosRestantes.setText("Quedanche  " + intentosRestantes + " intentos");
+    }
+
+    private void cargarConfig()  {
+        //Se cargaran los datos de configuracion del fichero configuracion
+        Properties prop = new Properties();
+        try {
+            prop.load(new FileReader("configuracion.properties"));
+            //Una vez obtenido el fichero, se guardaran los valores recogidos
+            numeroMaximo = Integer.parseInt(prop.getProperty("numeroMaximo"));
+            numeroMinimo = Integer.parseInt(prop.getProperty("numeroMinimo"));
+            numeroIntentos = Integer.parseInt(prop.getProperty("numeroIntentos"));
+        } catch (IOException e) {
+            System.err.println("Error al leer la configuracion");
+        }
     }
 
     public void btnProbar(ActionEvent actionEvent) {
+        //Para comprobar, imprimo por pantalla el numero
         System.out.println(numeroAleatorio);
-        // ESTE ES EL BOTON QUE HACE LAS COMPROBACIONES
-        int numeroUsuarioInput= parseInt(numeroUsuario.getText());
-        //  COMPROBADOR DE SI EL NUMERO ESTA DENTRO DEL RANGO ESPECIFICADO
-        if(numeroUsuarioInput < -1 || numeroUsuarioInput>100){
-            TXTFeedBack.setText("Por favor introduce un numero válido 0-100");
-        }else{
-            numeroIntentos--;
-            if(numeroIntentos==0){
-                btnProbar.setDisable(true);
-            }
-            //diferencia
-            int lejos = numeroUsuarioInput - numeroAleatorio;
-            int lejos2 = numeroAleatorio - numeroUsuarioInput;
-            //  numeroIntentos--;
-            if(lejos > 20 || lejos2 > 20){
+
+        //Boton que hace las comprobaciones para ver si se acierta el numero (tiene que estar dentro del intervalo de los nuevos numeros)
+        // int numeroUsuarioInput= parseInt(numeroUsuario.getText());
+        if (Integer.parseInt(numeroUsuario.getText()) > numeroMaximo || Integer.parseInt(numeroUsuario.getText()) < numeroMinimo) {
+            //Si el numero introducido no coincide, no se cuenta
+            throw new NumberFormatException();
+
+        //Si el numero introducido no coincide... Mejora: comprobando varios lados
+        }else if(Integer.parseInt(numeroUsuario.getText()) <  numeroAleatorio) {
+            if (numeroAleatorio - Integer.parseInt(numeroUsuario.getText()) > 20) {
                 TXTFeedBack.setFill(Color.BLUE);
                 TXTFeedBack.setText("El numero esta lejos");
-                System.out.println("El numero esta lejos, diferencia de mas de 20");
-            }else if(lejos < 20 && lejos > 10 || lejos2< 20 && lejos2 >10){
+            } else if (numeroAleatorio - Integer.parseInt(numeroUsuario.getText()) > 10 && numeroAleatorio - Integer.parseInt(numeroUsuario.getText()) <= 20) {
                 TXTFeedBack.setFill(Color.ORANGE);
                 TXTFeedBack.setText("El numero esta algo cerca");
-                System.out.println("El numero esta algo cerca, diferencia menos de  20 y  mas de 10");
-            }else if(lejos < 10 || lejos2<10 ){
+            } else {
                 TXTFeedBack.setFill(Color.RED);
                 TXTFeedBack.setText("El numero esta muy cerca");
-                System.out.println("El numero esta muy cerca, menos de 10");
             }
-            TXTintentosRestantes.setText("Quedanche  " + numeroIntentos + " intentos");
-            if(numeroUsuarioInput==numeroAleatorio){
-                int resta= 6 - numeroIntentos;
-                TXTFeedBack.setText("Acertó en " + resta + " intentos");
-                TXTFeedBack.setFill(Color.GREEN);
-                btnProbar.setDisable(true);
+            intentosRestantes--;
+        }else if(Integer.parseInt(numeroUsuario.getText()) <  numeroAleatorio){
+            if(Integer.parseInt(numeroUsuario.getText()) - numeroAleatorio > 20) {
+                TXTFeedBack.setFill(Color.BLUE);
+                TXTFeedBack.setText("El numero esta lejos");
+            }else if(Integer.parseInt(numeroUsuario.getText()) - numeroAleatorio >10 && Integer.parseInt(numeroUsuario.getText()) - numeroAleatorio <= 20) {
+                TXTFeedBack.setFill(Color.ORANGE);
+                TXTFeedBack.setText("El numero esta algo cerca");
+            }else {
+                TXTFeedBack.setFill(Color.RED);
             }
-        }
+            intentosRestantes -- ;
+            //Si el numero introducido es igual al numero, el boton se desabilita
 
+        }else if(Integer.parseInt(numeroUsuario.getText())== numeroAleatorio) {
+            TXTFeedBack.setText("Acertó en " + (numeroIntentos - intentosRestantes + 1) + " intentos");
+            TXTFeedBack.setFill(Color.GREEN);
+            btnProbar.setDisable(true);
+        }
+        //Indicaremos cuantos intentos nos quedan
+        TXTintentosRestantes.setText("Quedanche " +intentosRestantes + " intentos");
+        //En el caso de quedar 0 intentos, notificamos y desabilitamos el boton probar
+        if(intentosRestantes <= 0){
+            TXTFeedBack.setFill(Color.BLACK);
+            TXTFeedBack.setText("Quedaste sen intentos");
+            btnProbar.setDisable(true);
+        }
     }
 
-    public void btnNuevaPartida(ActionEvent actionEvent) {
+    public void btnNuevaPartida() {
         setup();
     }
 
     public void btnConfiguracion(ActionEvent actionEvent) {
+        //En este metodo cargaremos la configuracion para cambiar las variables...
+        try {
+            //Comprobar que los numeros que introduce estan dentro del parametro
+            if(Integer.parseInt(txtNumeroMinimo.getText())< 0){
+                throw new NumberFormatException();
+            }
+            if(Integer.parseInt(txtNumeroMaximo.getText())< 0){
+                throw new NumberFormatException();
+            }
+            if(Integer.parseInt(txtIntentos.getText())< 0){
+                throw new NumberFormatException();
+            }
+            //Actualizamos las variables
+            Properties prop = new Properties();
+            prop.setProperty("numeroMinimo" , txtNumeroMinimo.getText());
+            prop.setProperty("numeroMaximo", txtNumeroMaximo.getText());
+            prop.setProperty("numeroIntentos" , txtIntentos.getText());
+
+            //Actualizando fichero
+            prop.store(new FileWriter("configuracion.properties"),"ScapeRoom");
+
+            System.out.println("Configuracion actualizada");
+        } catch (IOException e) {
+            System.err.println("No se cargo la configuracion");
+        }
     }
 }
