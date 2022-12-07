@@ -42,7 +42,7 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0"
                       style="-fx-background-color: PaleTurquoise;">
-                    <TextField alignment="CENTER" editable="false" prefHeight="65.0" prefWidth="177.0"
+                    <TextField fx:id ="TXTNumeroaAdivinar" alignment="CENTER" editable="false" prefHeight="65.0" prefWidth="177.0"
                                style="-fx-background-color: PowderBlue;" text="Numero entre 0 e 100"/>
                     <TextField fx:id="TXTintentosTotal" alignment="CENTER" editable="false" prefHeight="65.0"
                                prefWidth="171.0" style="-fx-background-color: PowderBlue;"
@@ -70,7 +70,7 @@
                             </HBox.margin>
                         </Button>
                         <Button fx:id="btnNuevaPartida" mnemonicParsing="false" onAction="#btnNuevaPartida"
-                                text="Reset" textAlignment="CENTER">
+                                text="Nueva Partida" textAlignment="CENTER">
                             <HBox.margin>
                                 <Insets left="10.0"/>
                             </HBox.margin>
